@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#123f31" />
+  <title>La Despensa | Cocina artesanal en Girardota</title>
+  <meta name="description" content="La Despensa, cocina artesanal en Girardota. Descubre la carta, consulta horarios, encuentra cómo llegar y reserva por WhatsApp." />
+  <meta property="og:title" content="La Despensa | Cocina artesanal en Girardota" />
+  <meta property="og:description" content="Pasta, cazuelas, asados y platos para compartir. Consulta la carta y reserva por WhatsApp." />
+  <meta property="og:type" content="restaurant" />
+  <style>
+    :root {
+      --ink:#17382f;
+      --green:#123f31;
+      --green-2:#0c3025;
+      --cream:#f5efe5;
+      --paper:#fffaf2;
+      --sand:#d9c4a4;
+      --clay:#9d5d42;
+      --brown:#5b3a2f;
+      --muted:#66746d;
+      --line:rgba(23,56,47,.16);
+      --shadow:0 22px 60px rgba(25,38,31,.12);
+      --radius:22px;
+      --serif:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+      --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{margin:0;color:var(--ink);background:var(--paper);font-family:var(--sans);line-height:1.55;text-rendering:optimizeLegibility}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    :focus-visible{outline:3px solid #d59a54;outline-offset:4px}
+    .shell{width:min(1180px,calc(100% - 40px));margin:auto}
+    .eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--clay)}
+    .serif{font-family:var(--serif)}
+    .skip{position:absolute;left:-999px;top:auto}.skip:focus{left:16px;top:16px;z-index:9999;background:white;padding:10px 14px;border-radius:8px}
+
+    header{position:fixed;inset:0 0 auto 0;z-index:50;transition:.25s ease;background:linear-gradient(to bottom,rgba(9,31,24,.82),rgba(9,31,24,0));color:white}
+    header.scrolled{background:rgba(10,41,31,.95);backdrop-filter:blur(14px);box-shadow:0 6px 20px rgba(0,0,0,.14)}
+    nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:1.12rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
+    .garlic{width:35px;height:35px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.36);border-radius:50%}
+    .garlic svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.35}
+    .navlinks{display:flex;align-items:center;gap:28px;font-size:.92rem;font-weight:700}
+    .navlinks a:not(.pill){opacity:.88}.navlinks a:hover{opacity:1}
+    .pill{padding:12px 18px;border-radius:999px;background:var(--cream);color:var(--green);box-shadow:0 8px 18px rgba(0,0,0,.08)}
+    .menu-toggle{display:none;border:0;background:none;color:white;font-size:1.6rem;cursor:pointer}
+
+    .hero{min-height:94vh;display:grid;align-items:end;position:relative;overflow:hidden;background:var(--green-2);color:white}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,29,23,.88) 0%,rgba(8,29,23,.58) 40%,rgba(8,29,23,.18) 72%,rgba(8,29,23,.38) 100%),linear-gradient(0deg,rgba(8,29,23,.68),transparent 55%);z-index:1}
+    .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(circle at 70% 30%,#76563a 0,#2b4638 38%,#10382b 70%)}
+    .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.88) contrast(1.03)}
+    .hero-content{position:relative;z-index:2;padding:180px 0 72px;max-width:800px}
+    .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(4rem,8.5vw,7.8rem);line-height:.86;letter-spacing:-.045em;margin:16px 0 24px;max-width:900px}
+    .hero p{font-size:clamp(1rem,1.5vw,1.2rem);max-width:600px;color:rgba(255,255,255,.84);margin:0 0 32px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 20px;border-radius:999px;font-weight:800;border:1px solid transparent;transition:.2s ease;cursor:pointer}
+    .btn.primary{background:var(--cream);color:var(--green)}
+    .btn.secondary{border-color:rgba(255,255,255,.4);color:white;background:rgba(255,255,255,.05)}
+    .btn:hover{transform:translateY(-2px)}
+    .hero-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:44px;padding-top:26px;border-top:1px solid rgba(255,255,255,.22);font-size:.92rem}
+    .hero-meta strong{display:block;font-size:1.02rem;color:white}.hero-meta span{color:rgba(255,255,255,.68)}
+
+    .proof{background:var(--cream);border-bottom:1px solid var(--line)}
+    .proof-grid{display:grid;grid-template-columns:1.2fr repeat(3,.8fr);align-items:center;gap:18px;min-height:120px}
+    .proof-intro{font-family:var(--serif);font-size:1.34rem;line-height:1.25}.proof-item{padding-left:24px;border-left:1px solid var(--line)}
+    .proof-item b{display:block;font-family:var(--serif);font-size:1.6rem}.proof-item span{color:var(--muted);font-size:.86rem}
+
+    section{padding:110px 0}
+    .section-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:start;margin-bottom:56px}
+    .section-head h2{font-family:var(--serif);font-size:clamp(2.8rem,5vw,5rem);line-height:.95;font-weight:500;letter-spacing:-.04em;margin:0}
+    .section-head p{font-size:1.05rem;color:var(--muted);max-width:620px;margin:4px 0 0}
+
+    .story{background:var(--paper)}
+    .food-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+    .food-card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:560px;background:var(--green);box-shadow:var(--shadow)}
+    .food-card.small{min-height:270px}
+    .food-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .food-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,37,29,.72),transparent 55%)}
+    .food-caption{position:absolute;z-index:2;left:26px;right:26px;bottom:24px;color:white}
+    .food-caption span{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#f0d7b0}.food-caption h3{font-family:var(--serif);font-size:2rem;font-weight:500;margin:5px 0 0}
+    .food-stack{display:grid;grid-template-rows:1fr 1fr;gap:22px}
+
+    .menu-preview{background:var(--green);color:white;position:relative;overflow:hidden}
+    .menu-preview::before{content:"";position:absolute;width:480px;height:480px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-160px;top:-160px;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.018)}
+    .menu-preview .section-head p{color:rgba(255,255,255,.7)}
+    .menu-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;border-top:1px solid rgba(255,255,255,.16)}
+    .dish{display:grid;grid-template-columns:1fr auto;gap:14px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.16);align-items:start}
+    .dish h3{font-family:var(--serif);font-size:1.38rem;font-weight:500;margin:0 0 4px}.dish p{font-size:.88rem;color:rgba(255,255,255,.62);margin:0;max-width:440px}.price{font-weight:800;color:#efd7af;white-space:nowrap}
+    .menu-actions{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+
+    .experience{background:var(--cream)}
+    .experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .experience-card{background:var(--cream);padding:38px 30px;min-height:250px}.num{font-family:var(--serif);font-size:1.08rem;color:var(--clay)}.experience-card h3{font-family:var(--serif);font-weight:500;font-size:1.7rem;margin:42px 0 10px}.experience-card p{color:var(--muted);margin:0}
+
+    .location{background:var(--paper)}
+    .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+    .location-card{border:1px solid var(--line);border-radius:var(--radius);padding:48px;background:white;min-height:450px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 16px 50px rgba(27,45,37,.06)}
+    .location-card h2{font-family:var(--serif);font-weight:500;font-size:3.2rem;line-height:1;margin:10px 0 24px}.details{display:grid;gap:22px}.detail{display:grid;grid-template-columns:120px 1fr;gap:16px;border-top:1px solid var(--line);padding-top:16px}.detail b{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .map-art{border-radius:var(--radius);overflow:hidden;min-height:450px;position:relative;background:var(--green);color:white;display:grid;place-items:center;padding:36px;text-align:center}
+    .map-art::before{content:"";position:absolute;inset:-20%;background:repeating-linear-gradient(28deg,transparent 0 34px,rgba(255,255,255,.045) 35px 37px),repeating-linear-gradient(-31deg,transparent 0 56px,rgba(255,255,255,.035) 57px 59px);transform:rotate(3deg)}
+    .map-pin{position:relative;z-index:2}.map-pin .dot{width:74px;height:74px;border-radius:50% 50% 50% 0;background:var(--clay);transform:rotate(-45deg);margin:0 auto 36px;box-shadow:0 18px 30px rgba(0,0,0,.22)}.map-pin .dot::after{content:"";position:absolute;width:24px;height:24px;border-radius:50%;background:var(--cream);left:25px;top:25px}
+    .map-pin h3{font-family:var(--serif);font-size:2.1rem;font-weight:500;margin:0 0 12px}.map-pin p{color:rgba(255,255,255,.68);max-width:420px;margin:0 auto 24px}
+
+    .cta{background:var(--brown);color:white;padding:90px 0}.cta-inner{display:grid;grid-template-columns:1.3fr .7fr;align-items:end;gap:60px}.cta h2{font-family:var(--serif);font-size:clamp(3.2rem,6vw,6.5rem);font-weight:500;line-height:.9;letter-spacing:-.045em;margin:10px 0 0}.cta p{color:rgba(255,255,255,.72);margin:0 0 24px}
+    footer{background:#0b2c22;color:white;padding:52px 0 110px}.footer-grid{display:grid;grid-template-columns:1.1fr .7fr .7fr;gap:40px}.footer-title{font-family:var(--serif);font-size:1.8rem;letter-spacing:.08em;text-transform:uppercase}.footer-col b{display:block;margin-bottom:12px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#d8bea1}.footer-col a,.footer-col span{display:block;margin:7px 0;color:rgba(255,255,255,.68);font-size:.93rem}.legal{margin-top:42px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.48);font-size:.78rem}
+
+    dialog{width:min(1000px,94vw);max-height:90vh;border:0;border-radius:20px;padding:0;background:#0d3328;color:white;box-shadow:0 30px 80px rgba(0,0,0,.45)}dialog::backdrop{background:rgba(6,22,17,.82);backdrop-filter:blur(8px)}.dialog-head{position:sticky;top:0;z-index:5;background:rgba(13,51,40,.96);display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid rgba(255,255,255,.12)}.dialog-head strong{font-family:var(--serif);font-size:1.35rem}.close{border:1px solid rgba(255,255,255,.24);background:none;color:white;border-radius:999px;width:40px;height:40px;cursor:pointer}.menu-image-wrap{padding:18px;background:#143f33}.menu-image-wrap img{width:100%;height:auto;border-radius:12px;background:#163e32}.menu-note{padding:16px 22px 22px;color:rgba(255,255,255,.65);font-size:.85rem}
+
+    .mobile-actions{display:none}
+    .mobile-panel{display:none;position:fixed;inset:82px 0 auto 0;background:var(--green-2);color:white;z-index:48;padding:18px 20px 28px;box-shadow:0 18px 30px rgba(0,0,0,.18)}.mobile-panel.open{display:grid;gap:18px}.mobile-panel a{font-family:var(--serif);font-size:1.45rem}
+
+    @media (max-width:860px){
+      .shell{width:min(100% - 28px,720px)}
+      .navlinks{display:none}.menu-toggle{display:block}
+      .hero{min-height:90svh}.hero-content{padding:145px 0 44px}.hero h1{font-size:clamp(3.7rem,16vw,6rem)}
+      .proof-grid{grid-template-columns:1fr 1fr;padding:24px 0}.proof-intro{grid-column:1/-1}.proof-item:nth-child(2){border-left:0;padding-left:0}
+      section{padding:78px 0}.section-head{grid-template-columns:1fr;gap:18px;margin-bottom:38px}.section-head h2{font-size:clamp(2.8rem,11vw,4.4rem)}
+      .food-grid{grid-template-columns:1fr}.food-card{min-height:440px}.food-stack{grid-template-columns:1fr 1fr;grid-template-rows:none}.food-card.small{min-height:240px}
+      .menu-list{grid-template-columns:1fr}.experience-grid{grid-template-columns:1fr}.experience-card{min-height:unset}.experience-card h3{margin-top:24px}
+      .location-grid{grid-template-columns:1fr}.location-card{min-height:unset;padding:32px}.map-art{min-height:380px}.detail{grid-template-columns:1fr;gap:4px}
+      .cta-inner{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid .brand-foot{grid-column:1/-1}
+      .mobile-actions{position:fixed;z-index:60;left:10px;right:10px;bottom:10px;display:grid;grid-template-columns:1fr 1.4fr;gap:8px;background:rgba(255,250,242,.94);border:1px solid var(--line);padding:7px;border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.18);backdrop-filter:blur(12px)}.mobile-actions .btn{min-height:48px;padding:0 12px}.mobile-actions .btn.secondary{color:var(--green);border-color:var(--line);background:white}.mobile-actions .btn.primary{background:var(--green);color:white}
+    }
+    @media (max-width:560px){.food-stack{grid-template-columns:1fr}.food-card.small{min-height:250px}.menu-list{gap:0}.dish{grid-template-columns:1fr auto}.location-card h2{font-size:2.6rem}.footer-grid{grid-template-columns:1fr}.footer-grid .brand-foot{grid-column:auto}.hero-meta{gap:16px}.hero-meta>div{min-width:44%}}
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Restaurant",
+    "name":"La Despensa | Cocina artesanal",
+    "servesCuisine":["Cocina artesanal","Pasta","Asados","Cazuelas"],
+    "telephone":"+57 301 4402456",
+    "address":{"@type":"PostalAddress","streetAddress":"Cra. 17f #12 a 04","addressLocality":"Girardota","addressRegion":"Antioquia","addressCountry":"CO"},
+    "sameAs":["https://instagram.com/ladespensa_g"],
+    "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.6","reviewCount":"289","bestRating":"5"}
+  }
+  </script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header id="header">
+  <div class="shell">
+    <nav aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="La Despensa, inicio">
+        <span class="garlic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5c0-2 1.2-3.5 3-4-.4 2-.1 3.5 1 4.7M11.8 6.2C8 4.5 4.5 7.1 4.5 11.2c0 4.8 3.3 9.3 7.5 10.8 4.2-1.5 7.5-6 7.5-10.8 0-4.1-3.5-6.7-7.3-5zM12 6.4v15.2M8.4 7.1c-1.2 4.4.2 9.2 3.6 14.3M15.6 7.1c1.2 4.4-.2 9.2-3.6 14.3"/></svg></span>
+        <span>La Despensa</span>
+      </a>
+      <div class="navlinks">
+        <a href="#carta">Carta</a><a href="#experiencia">Experiencia</a><a href="#ubicacion">Ubicación</a><a href="https://instagram.com/ladespensa_g" target="_blank" rel="noopener">Instagram</a>
+        <a class="pill" href="https://wa.me/573205564363?text=Hola%20La%20Despensa%2C%20quisiera%20hacer%20una%20reserva." target="_blank" rel="noopener">Reservar</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </nav>
+  </div>
+</header>
+<div class="mobile-panel" id="mobilePanel" aria-hidden="true"><a href="#carta">Carta</a><a href="#experiencia">Experiencia</a><a href="#ubicacion">Ubicación</a><a href="https://instagram.com/ladespensa_g" target="_blank" rel="noopener">Instagram</a></div>
+
+<main id="contenido">
+  <section class="hero" id="inicio">
+    <div class="hero-media"><img src="https://saborygusto.com/images/galeria_restaurantes/restaurante_la_despensa_girardota/la_despensa_girardota_02.jpg" alt="Plato de pasta de La Despensa" fetchpriority="high" /></div>
+    <div class="shell hero-content">
+      <div class="eyebrow" style="color:#f1d9b7">Girardota · Antioquia</div>
+      <h1>Cocina artesanal para quedarse en la mesa.</h1>
+      <p>Pasta, cazuelas, asados y platos para compartir en un rincón de Girardota pensado para comer sin prisa.</p>
+      <div class="actions">
+        <button class="btn primary" data-open-menu>Ver la carta <span aria-hidden="true">↗</span></button>
+        <a class="btn secondary" href="https://wa.me/573205564363?text=Hola%20La%20Despensa%2C%20quisiera%20hacer%20una%20reserva." target="_blank" rel="noopener">Reservar por WhatsApp</a>
+      </div>
+      <div class="hero-meta" aria-label="Información rápida">
+        <div><strong>4.6 / 5</strong><span>Google · 289 reseñas</span></div>
+        <div><strong>Cra. 17F #12A-04</strong><span>Girardota, Antioquia</span></div>
+        <div><strong>+57 301 440 2456</strong><span>Línea telefónica</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="proof">
+    <div class="shell proof-grid">
+      <div class="proof-intro">Una carta amplia, hecha para elegir según el antojo.</div>
+      <div class="proof-item"><b>Pasta</b><span>Clásicos y combinaciones de la casa</span></div>
+      <div class="proof-item"><b>Cazuelas</b><span>Sabores cremosos y mar</span></div>
+      <div class="proof-item"><b>Asados</b><span>Pollo, res, cerdo y mar y tierra</span></div>
+    </div>
+  </div>
+
+  <section class="story" id="experiencia">
+    <div class="shell">
+      <div class="section-head">
+        <div><div class="eyebrow">La experiencia</div><h2>Una despensa de sabores, no de etiquetas.</h2></div>
+        <p>La carta mezcla cocina artesanal con influencias italianas, asiáticas y de parrilla. El resultado es una propuesta amplia para una cena, un almuerzo de fin de semana o una mesa para compartir.</p>
+      </div>
+      <div class="food-grid">
+        <article class="food-card">
+          <img src="https://saborygusto.com/images/galeria_restaurantes/restaurante_la_despensa_girardota/la_despensa_girardota_01.jpg" alt="Plato servido en La Despensa" loading="lazy" />
+          <div class="food-caption"><span>Cocina artesanal</span><h3>Texturas, salsas y platos con carácter.</h3></div>
+        </article>
+        <div class="food-stack">
+          <article class="food-card small">
+            <img src="https://saborygusto.com/images/galeria_restaurantes/restaurante_la_despensa_girardota/la_despensa_girardota_03.jpg" alt="Preparación artesanal servida en La Despensa" loading="lazy" />
+            <div class="food-caption"><span>Para compartir</span><h3>Empieza por algo distinto.</h3></div>
+          </article>
+          <article class="food-card small" style="background:var(--brown);padding:34px;display:flex;align-items:flex-end">
+            <div style="position:relative;z-index:2;color:white"><div class="eyebrow" style="color:#efd7af">La Despensa</div><h3 class="serif" style="font-weight:500;font-size:2.45rem;line-height:1;margin:10px 0 14px">Cocina artesanal en Girardota.</h3><p style="color:rgba(255,255,255,.7);margin:0">Descubre la carta completa o escríbenos para reservar.</p></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-preview" id="carta">
+    <div class="shell">
+      <div class="section-head">
+        <div><div class="eyebrow" style="color:#efd7af">Carta · Abril 2026</div><h2>Elige por antojo.</h2></div>
+        <p>Una selección de la carta publicada. Los precios están expresados en pesos colombianos. Abre la carta completa para consultar todas las opciones disponibles.</p>
+      </div>
+      <div class="menu-list">
+        <article class="dish"><div><h3>Canastas de chicharrón</h3><p>Canastas de patacón con guacamole de mango y maíz tierno, chicharrones crocantes y melao de cerveza negra.</p></div><div class="price">$31.000</div></article>
+        <article class="dish"><div><h3>Brusquetas de la Cafresa</h3><p>Pan horneado al pesto, tomate y cuajada fresca, reducción de frutos y queso parmesano.</p></div><div class="price">$28.000</div></article>
+        <article class="dish"><div><h3>Bowl de pollo japonés</h3><p>Pollo crocante en teriyaki con vegetales, arroz, ajonjolí y notas de cocina asiática.</p></div><div class="price">$37.000</div></article>
+        <article class="dish"><div><h3>Bowl de lomo saltado</h3><p>Solomito de res salteado con vegetales, papas a la francesa y aguacate.</p></div><div class="price">$43.000</div></article>
+        <article class="dish"><div><h3>Cazuela de pollo y camarón</h3><p>Pollo y camarones con salsa napolitana artesanal, crema y vino, terminada con parmesano.</p></div><div class="price">$48.000</div></article>
+        <article class="dish"><div><h3>Cazuela de mariscos al gratín francés</h3><p>Mariscos frescos con quesos, terminados al horno sobre base de papas a la francesa.</p></div><div class="price">$60.000</div></article>
+        <article class="dish"><div><h3>Pollo balsámico</h3><p>Pollo con espinaca, champiñones, tomate cherry y cebolla dulce al horno.</p></div><div class="price">$42.000</div></article>
+        <article class="dish"><div><h3>Punta de anca mar y tierra</h3><p>Punta de anca a la parrilla con champiñones, camarón, vino blanco y mozzarella.</p></div><div class="price">$52.000</div></article>
+      </div>
+      <div class="menu-actions"><button class="btn primary" data-open-menu>Ver carta completa</button><a class="btn secondary" href="tel:+573014402456">Llamar al restaurante</a></div>
+    </div>
+  </section>
+
+  <section class="experience">
+    <div class="shell">
+      <div class="section-head">
+        <div><div class="eyebrow">Lo esencial</div><h2>Menos pasos entre el antojo y la mesa.</h2></div>
+        <p>La experiencia digital prioriza lo que más importa en un restaurante local: saber qué se come, cómo reservar y cómo llegar, especialmente desde el móvil.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="experience-card"><div class="num">01</div><h3>Carta visible</h3><p>Consulta platos y precios sin depender de redes sociales ni búsquedas externas.</p></article>
+        <article class="experience-card"><div class="num">02</div><h3>Reserva directa</h3><p>Un toque abre WhatsApp con el canal de reservas publicado por el restaurante.</p></article>
+        <article class="experience-card"><div class="num">03</div><h3>Ubicación clara</h3><p>Dirección, horarios publicados y acceso directo a la ruta en Google Maps.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="location" id="ubicacion">
+    <div class="shell location-grid">
+      <div class="location-card">
+        <div><div class="eyebrow">Encuéntranos</div><h2>Girardota,<br/>Antioquia.</h2></div>
+        <div class="details">
+          <div class="detail"><b>Dirección</b><span>Cra. 17F #12A-04, Girardota, Antioquia</span></div>
+          <div class="detail"><b>Horario publicado</b><span>Jueves 6:00–11:00 PM<br/>Viernes a domingo 12:00–10:30 PM</span></div>
+          <div class="detail"><b>Contacto</b><span><a href="tel:+573014402456">+57 301 440 2456</a><br/><a href="https://instagram.com/ladespensa_g" target="_blank" rel="noopener">@ladespensa_g</a></span></div>
+        </div>
+      </div>
+      <div class="map-art" aria-label="Acceso a ubicación de La Despensa en Google Maps">
+        <div class="map-pin"><div class="dot" aria-hidden="true"></div><h3>La Despensa</h3><p>Abre la ruta y llega directo a Cra. 17F #12A-04.</p><a class="btn primary" href="https://maps.google.com/?cid=17677599814251266687" target="_blank" rel="noopener">Cómo llegar <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="shell cta-inner">
+      <div><div class="eyebrow" style="color:#efd7af">Tu próxima mesa</div><h2>¿Qué se te antoja hoy?</h2></div>
+      <div><p>Consulta la carta o escríbenos por WhatsApp para hacer tu reserva.</p><div class="actions"><a class="btn primary" href="https://wa.me/573205564363?text=Hola%20La%20Despensa%2C%20quisiera%20hacer%20una%20reserva." target="_blank" rel="noopener">Reservar por WhatsApp</a><button class="btn secondary" data-open-menu>Ver carta</button></div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="brand-foot"><div class="footer-title">La Despensa</div><p style="color:rgba(255,255,255,.62);max-width:380px">Cocina artesanal en Girardota. Pasta, cazuelas, asados y platos para compartir.</p></div>
+      <div class="footer-col"><b>Visita</b><span>Cra. 17F #12A-04</span><span>Girardota, Antioquia</span><a href="https://maps.google.com/?cid=17677599814251266687" target="_blank" rel="noopener">Abrir en Maps ↗</a></div>
+      <div class="footer-col"><b>Contacto</b><a href="tel:+573014402456">+57 301 440 2456</a><a href="https://wa.me/573205564363" target="_blank" rel="noopener">WhatsApp reservas ↗</a><a href="https://instagram.com/ladespensa_g" target="_blank" rel="noopener">Instagram ↗</a></div>
+    </div>
+    <div class="legal">© 2026 La Despensa · Girardota, Antioquia. Horarios y carta sujetos a actualización del restaurante.</div>
+  </div>
+</footer>
+
+<div class="mobile-actions" aria-label="Acciones rápidas">
+  <button class="btn secondary" data-open-menu>Carta</button><a class="btn primary" href="https://wa.me/573205564363?text=Hola%20La%20Despensa%2C%20quisiera%20hacer%20una%20reserva." target="_blank" rel="noopener">Reservar</a>
+</div>
+
+<dialog id="menuDialog" aria-labelledby="menuTitle">
+  <div class="dialog-head"><strong id="menuTitle">Carta completa · Abril 2026</strong><button class="close" id="closeMenu" aria-label="Cerrar carta">✕</button></div>
+  <div class="menu-image-wrap"><img src="https://saborygusto.com/images/cartas_restaurantes/carta_la_despensa/carta_la_despensa_01.jpg" alt="Carta completa de La Despensa publicada en abril de 2026" /></div>
+  <div class="menu-note">Carta publicada en abril de 2026. Confirma disponibilidad y precios directamente con el restaurante si tienes alguna duda.</div>
+</dialog>
+
+<script>
+  const header=document.getElementById('header');
+  addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>24),{passive:true});
+  const toggle=document.getElementById('menuToggle');
+  const panel=document.getElementById('mobilePanel');
+  toggle.addEventListener('click',()=>{const open=panel.classList.toggle('open');toggle.setAttribute('aria-expanded',open);panel.setAttribute('aria-hidden',!open);toggle.textContent=open?'✕':'☰'});
+  panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('open');toggle.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');toggle.textContent='☰'}));
+  const dialog=document.getElementById('menuDialog');
+  document.querySelectorAll('[data-open-menu]').forEach(b=>b.addEventListener('click',()=>dialog.showModal()));
+  document.getElementById('closeMenu').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+</script>
+</body>
+</html>
